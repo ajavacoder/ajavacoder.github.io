@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<style>
+		body {
+			font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+			font-size: 62.5%;
+		}
+		#outputContainer {
+			padding-top: 10px;
+		}
+		textarea {
+			margin: 0px; 
+			height: 410px; 
+			width: 100%;
+			border: none;
+			resize: none;
+		}
+		table {
+			font-size: 100%;
+		}
+	</style>
+	<link rel="stylesheet" href="lib/jquery-ui.css">
+</head>
+<body>
+	<div id="inputContainer">
+		<h3>Reasoning</h3>
+			<div>
+				<table>
+				<tr>
+					<td>
+						<span>Hypothese:</span>
+					</td>
+					<td>
+						<input type="text" name="hypo" value='A = 30, B = 60, c = 3'>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span>Goals:</span>
+					</td>
+					<td>
+						<input type="text" name="goal" value='C, R'>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button id="startReason">Start</button>
+					</td>
+				</tr>
+				</table>
+			</div>
+		<h3>Expression</h3>
+			<div>
+				<table>
+				<tr>
+					<td>
+						<span>Expression:</span>
+					</td>
+					<td>
+						<input type="text" name="expr" value='A+B+C=180'>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button id="startParsing">Parse</button>
+						<button id="startEvaluate">Evaluate</button>
+						<button id="startTransform">Transform</button>
+					</td>
+				</tr>
+				</table>
+			</div>
+	</div>
+	<div id="outputContainer">
+	<h3>Result</h3>
+		<div>
+			<textarea id="output" style="margin: 0px; height: 437px; width: 100%;" readonly></textarea>
+		</div>
+	</div>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/jquery-ui.js"></script>
+	<script src="js/model.js"></script>
+	<script src="js/set.js"></script>
+	<script src="js/expression.js"></script>
+	<script src="js/reasoning.js"></script>
+	<script src="js/main.js"></script>
+</body></html>
