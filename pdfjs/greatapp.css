@@ -1,0 +1,38 @@
+input {
+    margin-top : 6px;
+}
+.ng-scope {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    margin-top: 12px;
+    background-color: rgb(167, 218, 193);
+}
+.ng-scope  .ng-scope {
+    background-color: rgb(208, 150, 210);
+}
+.ng-scope .ng-scope .ng-scope {
+    background-color: rgb(136, 148, 228);
+}
+.ng-scope .ng-scope .ng-scope .ng-scope {
+    background-color: rgb(237, 237, 145);
+}
+.ng-scope .ng-scope .ng-scope .ng-scope .ng-scope {
+    background-color: rgb(232, 144, 106);
+}
+.btn-magic {
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    //animation: progress-bar-stripes 2s linear infinite;
+}
