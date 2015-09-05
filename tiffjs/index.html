@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="lib/bootstrap.css"/>
+        <link rel="stylesheet" href="greatapp.css"/>
+    </head>
+    <body>
+        <div ng-app="GreatApp" class="container">
+            <div ng-controller="GreatCtrl">
+                <div align="center">
+                    <button class="btn btn-default btn-success" ng-click="load()"><span class="glyphicon glyphicon-open"/></button>
+                    <button class="btn btn-default btn-success" ng-click="first()"><span class="glyphicon glyphicon-fast-backward"/></button>
+                    <button class="btn btn-default btn-success" ng-click="prev()"><span class="glyphicon glyphicon-triangle-left"/></button>
+                    <span> {{currentpage}} </span>
+                    <button class="btn btn-default btn-success" ng-click="next()"><span class="glyphicon glyphicon-triangle-right"/></button>
+                    <button class="btn btn-default btn-success" ng-click="last()"><span class="glyphicon glyphicon-fast-forward"/></button>
+                    <button class="btn btn-default btn-success" ng-click="zoomin()"><span class="glyphicon glyphicon-zoom-in"/></button>
+                    <button class="btn btn-default btn-success" ng-click="zoomout()"><span class="glyphicon glyphicon-zoom-out"/></button>
+                </div>
+                <div id="viewer" align="center">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="lib/tiff.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.js"></script>
+        <script type="text/javascript" src="lib/bootstrap.js"></script>
+        <script type="text/javascript" src="lib/angular.js"></script>
+        <script type="text/javascript" src="greatapp.js"></script>
+    </body>
+<html>
