@@ -17,9 +17,45 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-ldap</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.directory.server</groupId>
+	        <artifactId>apacheds-server-jndi</artifactId>
+	        <version>1.5.5</version>
+	    </dependency>
+	    <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
     </dependencies>
-    
     <repositories>
         <repository>
             <id>repository.spring.snapshot</id>
@@ -33,10 +69,10 @@
             <url>http://repo.spring.io/release</url>
         </repository>
         <repository>
-		    <id>repository.spring.milestone</id>
-		    <name>Spring Milestone Repository</name>
-		    <url>http://repo.spring.io/milestone</url>
-		</repository>
+            <id>repository.spring.milestone</id>
+            <name>Spring Milestone Repository</name>
+            <url>http://repo.spring.io/milestone</url>
+        </repository>
     </repositories>
     
     <pluginRepositories>
@@ -51,6 +87,7 @@
     </pluginRepositories>
     
     <build>
+        <finalName>nguyenhuu</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
