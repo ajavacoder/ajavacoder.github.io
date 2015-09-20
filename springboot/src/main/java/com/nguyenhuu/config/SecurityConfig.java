@@ -25,12 +25,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, LdapRole ldapRole) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth, CustomLdapAuthority ldapAuthority) throws Exception {
         auth
             .ldapAuthentication()
                 .userDnPatterns("uid={0},ou=people")
                 .groupSearchBase("ou=groups")
-                .ldapAuthoritiesPopulator(ldapRole)
+                //.ldapAuthoritiesPopulator(ldapAuthority)
                 .contextSource().ldif("classpath:test-server.ldif");
     }
 }

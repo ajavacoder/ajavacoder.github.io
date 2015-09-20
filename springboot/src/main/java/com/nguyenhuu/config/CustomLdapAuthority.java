@@ -10,7 +10,7 @@ import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LdapRole implements LdapAuthoritiesPopulator{
+public class CustomLdapAuthority implements LdapAuthoritiesPopulator{
     @Override
     public Collection<? extends GrantedAuthority> getGrantedAuthorities(
             DirContextOperations userData, String username) {
