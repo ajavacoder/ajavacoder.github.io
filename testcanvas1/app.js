@@ -2,8 +2,8 @@ var app = angular.module("GreatApp",[
     
 ]);
 
-app.controller("GreatCtrl", ['$scope', function($scope) {
-    $scope.image = new Image();    
+app.controller("GreatCtrl", ['$scope', '$interval', function($scope, $interval) {
+    $scope.image = document.getElementById("image");
     $scope.canvas = document.getElementById("canvas");
 
     $scope.minScale = 1;
@@ -38,16 +38,13 @@ app.controller("GreatCtrl", ['$scope', function($scope) {
             };
             $scope.drawImage($scope.currentTransform);
             $scope.frame++;
-            window.requestAnimationFrame($scope.doDrawImage);
         } else if ($scope.frame == $scope.FRAME_PER_ACTION + 1) {
             $scope.startTransform = angular.copy($scope.targetTransform);
             $scope.frame++;
-            window.requestAnimationFrame($scope.doDrawImage);
         } else if ($scope.frame == 0) {
             $scope.startTransform = angular.copy($scope.currentTransform);
             $scope.frame++;
-            window.requestAnimationFrame($scope.doDrawImage);
-        } else window.requestAnimationFrame($scope.doDrawImage);
+        }        
     }
     $scope.drawImage = function(transform) {
         var context = $scope.canvas.getContext('2d');
@@ -60,6 +57,7 @@ app.controller("GreatCtrl", ['$scope', function($scope) {
         context.drawImage($scope.image, $scope.image.width / -2, $scope.image.height / -2, $scope.image.width, $scope.image.height);
         context.restore();
     };
+    $interval($scope.doDrawImage, 10, 0, false);
 
     $scope.onload = function() {
         $(window).trigger("resize");
@@ -80,9 +78,8 @@ app.controller("GreatCtrl", ['$scope', function($scope) {
             y : $scope.canvas.height/2
         };
         $scope.frame = 0;
-        //window.requestAnimationFrame($scope.doDrawImage);
-        //$scope.doDrawImage();
     };
+    /*
     $(document).on('keydown', function(event){
         event.preventDefault();
         var keyCode = event.which || event.keyCode || 0;
@@ -93,8 +90,9 @@ app.controller("GreatCtrl", ['$scope', function($scope) {
             case 40: $scope.targetTransform.translate.y += 20; break;
         };
         $scope.frame = 0;
-        //window.requestAnimationFrame($scope.doDrawImage);
+        window.requestAnimationFrame($scope.doDrawImage);
     });
+    */
     $($scope.canvas).on('mousewheel', function(event) {
         event.preventDefault();
         console.log(event.deltaY);
@@ -111,10 +109,9 @@ app.controller("GreatCtrl", ['$scope', function($scope) {
             $scope.targetTransform.translate.y -= (event.offsetY - $scope.targetTransform.translate.y)*(newScale - $scope.targetTransform.scale)/$scope.targetTransform.scale;
             $scope.targetTransform.scale = newScale;
             $scope.frame = 0;
-            //window.requestAnimationFrame($scope.doDrawImage);
+            window.requestAnimationFrame($scope.doDrawImage);
             //$scope.doDrawImage();
         };      
     });
     $scope.image.src = "walmart.jpg";
-    window.requestAnimationFrame($scope.doDrawImage);
 }]);
