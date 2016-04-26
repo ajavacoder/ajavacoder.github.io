@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -61,7 +62,7 @@ public class TestGeneral {
 	
 	protected WebDriver getEdgeDriver() {
 		System.setProperty("webdriver.edge.driver", "D:\\server\\selenium\\MicrosoftWebDriver.exe");
-    	WebDriver driver = new InternetExplorerDriver();
+    	WebDriver driver = new EdgeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
 	}
