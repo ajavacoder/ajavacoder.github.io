@@ -13,7 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TestTestNg {
+public class TestTestNg extends TestGeneral {
     private WebDriver driver;
     
     @Test
@@ -36,7 +36,7 @@ public class TestTestNg {
     
     @BeforeClass
     public void beforeClass() {
-        File pathToFirefoxBinary = new File("/home/nvhuu/tools/firefox/firefox");
+        File pathToFirefoxBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
         FirefoxBinary firefoxBinary = new FirefoxBinary(pathToFirefoxBinary);
         FirefoxProfile firefoxProfile = new FirefoxProfile();
         driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
