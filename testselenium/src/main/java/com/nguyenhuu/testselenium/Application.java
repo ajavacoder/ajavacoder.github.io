@@ -1,15 +1,28 @@
 package com.nguyenhuu.testselenium;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 
-public class Application {
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class Application extends javafx.application.Application {
 
     public static void main(String[] args) {
-        runTestNg();
-        runJUnit();
+        //runTestNg();
+        //runJUnit();
+        launch(args);
     }
     private static void runTestNg() {
         TestListenerAdapter tla = new TestListenerAdapter();
@@ -25,5 +38,15 @@ public class Application {
         Result result = jUnitCore.run(TestJUnit.class);
         System.out.println("Passed: " + (result.getRunCount() - result.getFailureCount() - result.getIgnoreCount()));
         System.out.println("Failed: " + result.getFailureCount());
+    }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/MainStage.fxml"));
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add
+        (getClass().getResource("/MainStage.css").toExternalForm());
+        primaryStage.setTitle("Selenium Demo");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

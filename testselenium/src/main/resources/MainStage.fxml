@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnStart" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefWidth="80.0" text="Start" />
+      <TableView layoutX="14.0" layoutY="53.0" prefHeight="334.0" prefWidth="573.0">
+        <columns>
+            <TableColumn prefWidth="30.0" />
+          <TableColumn prefWidth="212.0" text="Name" />
+          <TableColumn prefWidth="451.0" text="Result" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnStop" layoutX="107.0" layoutY="14.0" mnemonicParsing="false" prefWidth="80.0" text="Stop" />
+   </children>
+</Pane>
