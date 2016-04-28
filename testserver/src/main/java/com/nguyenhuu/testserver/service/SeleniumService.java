@@ -45,6 +45,8 @@ public class SeleniumService {
         driver.close();
     }
     
+    //TODO: using reflection to invoke functions
+    
     //TODO: implement encrypt password
     //TODO: enhance log
     //TODO: implement more command
