@@ -11,40 +11,55 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TestDriverFactory {
-	private static Integer DEFAULT_TIMEOUT = 10;
-	private static String DEFAULT_SERVER = "http://127.0.0.1:4444/wd/hub";
-	
-	public static WebDriver getDriver(String driverType) {
-		switch (driverType) {
-			case "firefox" : return getFirefoxDriver();
-			case "remote" : return getRemoteWebDriver();
-			default : return getChromeDriver();
-		}
-	}
-	
-	public static WebDriver getChromeDriver() {
-		System.setProperty("webdriver.chrome.driver", "D:\\server\\selenium\\chromedriver.exe");
+    
+    @Value("${path.chrome}")
+    private String chromePath;
+    
+    @Value("${path.firefox}")
+    private String firefoxPath;
+    
+    @Value("${path.remote}")
+    private String remotePath;
+    
+    @Value("${time.timeout:30}")
+    private Integer timeout;
+    
+    public WebDriver getDriver(String driverType) {
+        switch (driverType) {
+            case "firefox" : return getFirefoxDriver();
+            case "remote" : return getRemoteWebDriver();
+            default : return getChromeDriver();
+        }
+    }
+    
+    public WebDriver getChromeDriver() {
+        System.setProperty("webdriver.chrome.driver", chromePath);
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
         return driver;
-	}
-	public static WebDriver getFirefoxDriver() {
-		File pathToFirefoxBinary = new File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+    }
+    
+    public WebDriver getFirefoxDriver() {
+        File pathToFirefoxBinary = new File(firefoxPath);
         FirefoxBinary firefoxBinary = new FirefoxBinary(pathToFirefoxBinary);
         FirefoxProfile firefoxProfile = new FirefoxProfile();
         WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
-	}
-	public static WebDriver getRemoteWebDriver() {
-		try {
-			WebDriver driver = new RemoteWebDriver(new URL(DEFAULT_SERVER), DesiredCapabilities.chrome());
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			return driver;
-		} catch (Exception ex) {
-			return getChromeDriver();
-		}
-	}
+    }
+    
+    public WebDriver getRemoteWebDriver() {
+        try {
+            WebDriver driver = new RemoteWebDriver(new URL(remotePath), DesiredCapabilities.chrome());
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            return driver;
+        } catch (Exception ex) {
+            return getChromeDriver();
+        }
+    }
 }

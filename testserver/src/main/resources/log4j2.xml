@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="LOG_EXCEPTION_CONVERSION_WORD">%rEx</Property>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} [%5p] [%-40.40c{1.}] : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.nguyenhuu.testserver" level="debug" additivity="false">
+			<AppenderRef ref="Console" level="debug" />
+		</Logger>
+		<Root level="debug">
+			<AppenderRef ref="Console" level="info"/>
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,22 +1,16 @@
 package com.nguyenhuu.testselenium;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+@SuppressWarnings("unused")
 public class Application extends javafx.application.Application {
 
     public static void main(String[] args) {
