@@ -26,7 +26,7 @@ public class TestDriverFactory {
     @Value("${path.remote}")
     private String remotePath;
     
-    @Value("${time.timeout:30}")
+    @Value("${time.timeout:60}")
     private Integer timeout;
     
     public WebDriver getDriver(String driverType) {
@@ -49,14 +49,14 @@ public class TestDriverFactory {
         FirefoxBinary firefoxBinary = new FirefoxBinary(pathToFirefoxBinary);
         FirefoxProfile firefoxProfile = new FirefoxProfile();
         WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
         return driver;
     }
     
     public WebDriver getRemoteWebDriver() {
         try {
             WebDriver driver = new RemoteWebDriver(new URL(remotePath), DesiredCapabilities.chrome());
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
             return driver;
         } catch (Exception ex) {
             return getChromeDriver();

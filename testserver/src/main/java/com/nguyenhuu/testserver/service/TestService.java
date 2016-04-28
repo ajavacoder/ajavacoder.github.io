@@ -2,7 +2,9 @@ package com.nguyenhuu.testserver.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -62,7 +64,8 @@ public class TestService {
     private TestResult doSingleTest(TestCase testCase) {
         System.out.println("Test: " + testCase.getTestId());
         WebDriver driver = testDriverFactory.getDriver("chrome");
-        return seleniumService.doTestSteps(driver, testCase.getTestId(), testCase.getTestSteps());
+        Map<String, Object> buffer = new LinkedHashMap<String, Object>();
+        return seleniumService.doTestSteps(buffer, driver, testCase.getTestId(), testCase.getTestSteps());
     }
     
     private class TestWorker implements Runnable {

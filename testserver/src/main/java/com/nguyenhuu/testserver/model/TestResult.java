@@ -4,11 +4,13 @@ public class TestResult {
 	private String testId;
 	private Boolean status;
 	private int stepNumber;
+	private String stepContent;
 	private String message;
-	public TestResult(String testId, Boolean status, int stepNumber, String message) {
+	public TestResult(String testId, Boolean status, int stepNumber, String stepContent, String message) {
 		this.testId = testId;
 		this.status = status;
 		this.stepNumber = stepNumber;
+		this.stepContent = stepContent;
 		this.message = message;
 	}
 	public String getTestId() {
@@ -28,6 +30,12 @@ public class TestResult {
 	}
 	public void setStepNumber(int stepNumber) {
 		this.stepNumber = stepNumber;
+	}
+	public String getStepContent() {
+		return stepContent;
+	}
+	public void setStepContent(String stepContent) {
+		this.stepContent = stepContent;
 	}
 	public String getMessage() {
 		return message;
