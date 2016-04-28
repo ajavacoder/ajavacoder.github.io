@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.nguyenhuu.testserver.model.TestResult;
 
+@SuppressWarnings({"rawtypes", "unchecked"}) 
 @Service
 public class SeleniumService {
     public TestResult doTestSteps(Map buffer, WebDriver driver, String testId, String step) {
