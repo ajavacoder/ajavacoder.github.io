@@ -4,13 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Service;
 
+import com.nguyenhuu.testserver.model.TestResult;
+
 @Service
 public class SeleniumService {
-    public void doTestSteps(WebDriver driver, String step) {
+    public TestResult doTestSteps(WebDriver driver, String testId, String step) {
         String[] steps = step.split("\\n");
         for (int i =0;i<steps.length;i++) {
-            doTestStep(driver, steps[i]);
+        	try {
+        		doTestStep(driver, steps[i]);        		
+        	} catch (Exception ex) {
+        		if (driver != null) driver.close();
+        		return new TestResult(testId, false, i, ex.getMessage());
+        	}
         }
+        if (driver != null)  driver.close();
+        return new TestResult(testId, true, steps.length, "OK");
     }
     public void doTestStep(WebDriver driver, String step) {
         String[] parts = step.split(" ");

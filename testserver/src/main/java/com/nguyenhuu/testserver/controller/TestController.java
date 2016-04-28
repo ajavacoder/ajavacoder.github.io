@@ -1,5 +1,7 @@
 package com.nguyenhuu.testserver.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nguyenhuu.testserver.model.TestConfig;
+import com.nguyenhuu.testserver.model.TestResult;
 import com.nguyenhuu.testserver.service.TestService;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
@@ -21,8 +24,8 @@ public class TestController {
     TestService testService;
     @RequestMapping(path="/test",method=RequestMethod.POST)
     public ResponseEntity doTests(@RequestBody TestConfig testConfig) {
-        testService.doTest(testConfig);
-        return new ResponseEntity("OK", HttpStatus.OK);
+    	List<TestResult> result = testService.doTest(testConfig);
+        return new ResponseEntity(result, HttpStatus.OK);
     }
     
     @RequestMapping(path="/test",method=RequestMethod.GET)
